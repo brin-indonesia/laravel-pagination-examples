@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PaginatedController;
+use App\Http\Controllers\UnpaginatedController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', 'paginated');
+Route::get('/paginated', PaginatedController::class)->name('paginated');
+Route::get('/unpaginated', UnpaginatedController::class)->name('unpaginated');
